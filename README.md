@@ -67,6 +67,65 @@ for (TokenGroup tokenGroup : page2.items) {
 ```
 
 ```ruby
+ledger.keys.create(id: 'treasury')
+ledger.keys.create(id: 'consumer')
+ledger.keys.create(id: 'merchant')
+ledger.keys.create(id: 'loyalty')
+
+ledger.flavors.create(
+  id: 'usd',
+  key_ids: ['treasury'],
+  tags: {type: 'currency'}
+)
+
+ledger.flavors.create(
+  id: 'eur',
+  key_ids: ['treasury'],
+  tags: {type: 'currency'}
+)
+
+ledger.flavors.create(
+ id: 'points',
+ key_ids: ['loyalty']
+)
+
+ledger.accounts.create(
+  id: 'alice',
+  key_ids: ['consumer'],
+  tags: {type: 'consumer'}
+)
+
+ledger.accounts.create(
+  id: 'bob',
+  key_ids: ['consumer'],
+  tags: {type: 'consumer'}
+)
+
+ledger.accounts.create(
+  id: 'merchant1',
+  key_ids: ['merchant'],
+  tags: {type: 'merchant'}
+)
+lddger.accounts.create(
+  id: 'merchant2',
+  key_ids: ['merchant'],
+  tags: {type: 'merchant'}
+)
+
+ledger.accounts.create(
+  id: 'company',
+  key_ids: ['treasury'],
+  tags: {type: 'company'}
+)
+
+ledger.transactions.transact do |builder|
+
+builder.issue(
+
+)
+end
+
+
 ledger.transactions.transact do |builder|
   builder.transfer(
     flavor_id: 'usd',
