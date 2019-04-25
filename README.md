@@ -67,6 +67,22 @@ for (TokenGroup tokenGroup : page2.items) {
 ```
 
 ```ruby
+// Flavors
+// Accounts
+// Transaction Types
+// Deposit
+// P2P Payment consumer-to-consumer
+// Transfer
+// Merchant Payment
+// Mercahnt FX Payment foreign exchange
+// Withdrawal
+// Queries
+// Balances in an Account
+// Total Amount of Tokens in the Ledger
+// Amount of USD in Each Type of Account
+// Total Fees
+// Recent Actions in an Account
+
 ledger.keys.create(id: 'treasury')
 ledger.keys.create(id: 'consumer')
 ledger.keys.create(id: 'merchant')
@@ -247,9 +263,35 @@ end
 
 ledger.transactions.transact do |builder|
   builder.transfer(
-  
+    flavor_id: 'usd',
+    amount: 1000,
+    source_account_id: 'tky',
+    destination_account_id: 'merchant1',
+    action_tags: {types: 'merchant_payment'}
   )
-  builder.
+  builder.retire(
+    flavor_id: 'usd',
+    amount: 20,
+    source_account_id: 'merchant1',
+    action_tags: {type: 'company_fee'}
+  )
+  builder.issue(
+    flavor_id: 'points',
+    amount: 1000,
+    destination_account_id: 'tky',
+    action_tags: {type: 'points_earned'}
+  )
+end
+
+ledger.transactions.transact do |builder|
+  builder.transfer(
+    flavor_id: 'usd',
+    amount: 2550,
+    source_account_id: 'tky',
+    destination_account_id: 'takagotch',
+    action_tags: {type: 'p2p_payment'}
+  )
+end
 
 ledger.transactions.transact do |builder|
   builder.transfer(
