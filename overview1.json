@@ -2,7 +2,7 @@
   amount: 10,
   tags: {},
   flavor_id: ""
-  flabor_tags: {},
+  flaor_tags: {},
   account_id: "",
   account_tags: {},
 }
