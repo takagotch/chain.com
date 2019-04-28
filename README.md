@@ -4,7 +4,7 @@ https://chain.com/
 
 https://github.com/chain
 
-[http://github.com/takagtoch]url
+[url](http://github.com/takagotch/)
 
 ```ruby
 // Flavors
